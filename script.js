@@ -1,3 +1,17 @@
+// إعدادات الربط السحابي لـ Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyAwxRdFTkchvvS9dEEBMHpLrhfbojuC4mc",
+  authDomain: "nexosstore-5193a.firebaseapp.com",
+  projectId: "nexosstore-5193a",
+  storageBucket: "nexosstore-5193a.firebasestorage.app",
+  messagingSenderId: "191485188157",
+  appId: "1:191485188157:web:3eb62fced508cee459b254"
+};
+
+// تهيئة الاتصال
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
 // بيانات الدخول السرية للوحة التحكم (تعريف واحد فقط بدون تكرار)
 const SECRET_ADMIN_USER = "nexus_admin_2026";
 const SECRET_ADMIN_PASS = "secure_pass_9988";
