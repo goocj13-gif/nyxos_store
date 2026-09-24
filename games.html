@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قسم حسابات الألعاب | NexusStore</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    
+    <!-- شريط التنقل العلوي -->
+    <!-- شريط التنقل العلوي الموحد -->
+<header style="background: var(--card-bg, #1e293b); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000;">
+    <div id="brandName" style="font-size: 1.3rem; font-weight: bold; color: var(--primary-color, #6366f1);">NexusStore</div>
+    
+    <!-- زر الـ 3 شخطات للقائمة الجانبية -->
+    <button onclick="toggleSidebar()" style="background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer;">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+</header>
+
+<!-- القائمة الجانبية المخفية من اليسار (تظهر في كل الصفحات) -->
+<div id="sideMenu" style="position: fixed; top: 0; left: -280px; width: 260px; height: 100%; background: #1e293b; z-index: 2000; box-shadow: 5px 0 15px rgba(0,0,0,0.5); transition: 0.3s ease; padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; gap: 15px;">
+    
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; padding-bottom: 10px;">
+        <span style="font-weight: bold; font-size: 1.1rem; color: #818cf8;">قائمة المتجر</span>
+        <button onclick="toggleSidebar()" style="background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer;"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <!-- روابط التنقل الشاملة -->
+    <a href="index.html" style="color: #f8fafc; text-decoration: none; padding: 10px; border-radius: 6px; background: #334155;"><i class="fa-solid fa-house"></i> الرئيسية</a>
+    <a href="wallet.html" style="color: #f8fafc; text-decoration: none; padding: 10px; border-radius: 6px; background: #334155;"><i class="fa-solid fa-wallet"></i> المحفظة والشحن (شام كاش)</a>
+    <a href="games.html" style="color: #f8fafc; text-decoration: none; padding: 10px; border-radius: 6px; background: #334155;"><i class="fa-solid fa-gamepad"></i> الأقسام والألعاب</a>
+    <a href="recharge.html" style="color: #f8fafc; text-decoration: none; padding: 10px; border-radius: 6px; background: #334155;"><i class="fa-solid fa-bolt"></i> شحن شدات / جواهر</a>
+    <a href="admin.html" style="color: #f8fafc; text-decoration: none; padding: 10px; border-radius: 6px; background: #334155;"><i class="fa-solid fa-lock"></i> لوحة التحكم</a>
+</div>
+
+<!-- طبقة تعتيم الخلفية عند فتح القائمة -->
+<div id="menuOverlay" onclick="toggleSidebar()" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1500; display: none;"></div>
+
+   
+    <!-- محتوى قسم الألعاب -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title"><i class="fa-solid fa-shield-halved"></i> قسم حسابات الألعاب (بيع وشراء)</h2>
+            <p class="section-desc">اختر الحساب المناسب لك واضغط على زر الشراء لإرسال طلبك فوراً.</p>
+            
+            <!-- الحسابات المضافة ديناميكياً من لوحة التحكم -->
+            <div id="dynamicProductsGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-bottom: 40px;">
+                <!-- ستظهر الحسابات المضافة هنا تلقائياً -->
+            </div>
+
+            <h3 style="margin-top: 40px; margin-bottom: 20px; color: var(--text-color);">حسابات مميزة جاهزة</h3>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-badge">مفحوص ومضمون</div>
+                    <div class="card-img"><i class="fa-solid fa-user-shield"></i></div>
+                    <h3>حساب ببجي موبايل - كونكر</h3>
+                    <p>مستوى السيزون عالي، سكنات نادرة، ربط نظيف.</p>
+                    <div class="price">75 دولار</div>
+                    <button class="btn-buy" onclick="openOrderModal('حساب ببجي موبايل - كونكر - 75 دولار')"><i class="fa-solid fa-cart-shopping"></i> شراء الحساب</button>
+                </div>
+                <div class="card">
+                    <div class="card-badge">فوري</div>
+                    <div class="card-img"><i class="fa-solid fa-fire"></i></div>
+                    <h3>حساب فري فاير - اسطوري</h3>
+                    <p>إيبوتات قديمة، شخصيات كاملة، جدران نادرة.</p>
+                    <div class="price">45 دولار</div>
+                    <button class="btn-buy" onclick="openOrderModal('حساب فري فاير - اسطوري - 45 دولار')"><i class="fa-solid fa-cart-shopping"></i> شراء الحساب</button>
+                </div>
+                <div class="card">
+                    <div class="card-badge">ضمان مدى الحياة</div>
+                    <div class="card-img"><i class="fa-solid fa-dragon"></i></div>
+                    <h3>حساب فورتنايت - سكنات نادرة</h3>
+                    <p>ريليج, سكنات لفت آيكن القديمة.</p>
+                    <div class="price">60 دولار</div>
+                    <button class="btn-buy" onclick="openOrderModal('حساب فورتنايت - سكنات نادرة - 60 دولار')"><i class="fa-solid fa-cart-shopping"></i> شراء الحساب</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- نافذة إتمام الطلب المنبثقة -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2><i class="fa-solid fa-bag-shopping"></i> إتمام الطلب</h2>
+            <p id="selectedItemText" style="margin: 15px 0; color: var(--accent-color); font-weight: bold;"></p>
+            <form id="checkoutForm" onsubmit="submitOrder(event)">
+                <div class="form-group">
+                    <label>الاسم الكريم:</label>
+                    <input type="text" id="clientName" required placeholder="أدخل اسمك الكامل">
+                </div>
+                <div class="form-group">
+                    <label>وسيلة التواصل (واتساب / تيليجرام):</label>
+                    <input type="text" id="clientContact" required placeholder="رقم الهاتف أو المعرّف">
+                </div>
+                <div class="form-group">
+                    <label>معلومات إضافية / تفاصيل الطلب:</label>
+                    <textarea id="clientNotes" placeholder="اكتب تفاصيل إضافية أو ملاحظاتك هنا..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%;">تأكيد وإرسال الطلب للوحة التحكم</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 NexusStore. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

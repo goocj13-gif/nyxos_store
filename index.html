@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">NexusStore | الرئيسية</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- شريط التنقل العلوي -->
+    <!-- شريط التنقل العلوي -->
+<header style="background: var(--card-bg, #1e293b); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000;">
+    <div id="brandName" style="font-size: 1.3rem; font-weight: bold; color: var(--primary-color, #6366f1);">NexusStore</div>
+    
+    <!-- زر الـ 3 شخطات للقائمة الجانبية -->
+    <button onclick="toggleSidebar()" style="background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer;">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+</header>
+
+<!-- القائمة الجانبية المخفية من اليسار -->
+<div id="sideMenu" style="position: fixed; top: 0; left: -280px; width: 260px; height: 100%; background: #1e293b; z-index: 2000; box-shadow: 5px 0 15px rgba(0,0,0,0.5); transition: 0.3s ease; padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; gap: 15px;">
+    
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; padding-bottom: 10px;">
+        <span style="font-weight: bold; font-size: 1.1rem; color: #818cf8;">قائمة المتجر</span>
+        <button onclick="toggleSidebar()" style="background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer;"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <!-- روابط القائمة الجانبية (شملت المحفظة وكل الأزرار) -->
+    <a href="index.html" style="color: #f8fafc; text-decoration: none; padding: 10px; border-radius: 6px; background: #334155;"><i class="fa-solid fa-house"></i> الرئيسية</a>
+    <a href="wallet.html" style="color: #f8fafc; text-decoration: none; padding: 10px; border-radius: 6px; background: #334155;"><i class="fa-solid fa-wallet"></i> المحفظة والشحن (شام كاش)</a>
+    <a href="games.html" style="color: #f8fafc; text-decoration: none; padding: 10px; border-radius: 6px; background: #334155;"><i class="fa-solid fa-gamepad"></i> الأقسام والألعاب</a>
+    <a href="recharge.html" style="color: #f8fafc; text-decoration: none; padding: 10px; border-radius: 6px; background: #334155;"><i class="fa-solid fa-bolt"></i> شحن شدات / جواهر</a>
+    <a href="admin.html" style="color: #f8fafc; text-decoration: none; padding: 10px; border-radius: 6px; background: #334155;"><i class="fa-solid fa-lock"></i> لوحة التحكم</a>
+</div>
+
+<!-- طبقة تعتيم الخلفية عند فتح القائمة -->
+<div id="menuOverlay" onclick="toggleSidebar()" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1500; display: none;"></div>
+
+
+    <!-- القسم الرئيسي (Hero) -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 id="heroTitle">مرحباً بك في الوجهة الأولى للاعبين</h1>
+            <p id="heroSubtitle">بيع وشراء حسابات الألعاب، وشحن الجواهر والشدات بأمان وبأفضل الأسعار في السوق.</p>
+            <div class="hero-btns">
+                <a href="games.html" class="btn-primary"><i class="fa-solid fa-gamepad"></i> تصفح حسابات الألعاب</a>
+                <a href="recharge.html" class="btn-secondary"><i class="fa-solid fa-coins"></i> اطلب الشحن الآن</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المعلومات -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title"><i class="fa-solid fa-circle-info"></i> لماذا تختار متجرنا؟</h2>
+            <p class="section-desc">نضمن لك تجربة احترافية وآمنة بالكامل في عالم الألعاب.</p>
+            <div class="info-grid">
+                <div class="info-box">
+                    <i class="fa-solid fa-headset"></i>
+                    <h3>دعم فني 24/7</h3>
+                    <p>فريق متواجد طوال الوقت للإجابة على استفساراتكم وحل أي مشكلة فوراً.</p>
+                </div>
+                <div class="info-box">
+                    <i class="fa-solid fa-lock-open"></i>
+                    <h3>معاملات آمنة</h3>
+                    <p>نضمن حقوق البائع والمشتري بشكل كامل عبر نظام الوساطة المعتمد.</p>
+                </div>
+                <div class="info-box">
+                    <i class="fa-solid fa-gauge-high"></i>
+                    <h3>سرعة في التنفيذ</h3>
+                    <p>يتم تسليم الحسابات وعمليات الشحن في أسرع وقت ممكن بعد تأكيد الدفع.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 <span id="footerBrand">NexusStore</span>. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <!-- نافذة عرض حسابك للبيع -->
+<div id="sellModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeSellModal()">&times;</span>
+        <h2><i class="fa-solid fa-store"></i> عرض حسابك للبيع في المتجر</h2>
+        <p style="margin: 10px 0; color: var(--text-color); font-size: 0.9rem;">قم بإدخال تفاصيل حسابك بدقة وسنتواصل معك لنشره في المتجر.</p>
+        <form id="sellForm" onsubmit="submitSellAccount(event)">
+            <div class="form-group">
+                <label>اسمك أو معرف التواصل:</label>
+                <input type="text" id="sellerContact" required placeholder="رقم واتساب أو تيليجرام">
+            </div>
+            <div class="form-group">
+                <label>لعبة الحساب والقسم:</label>
+                <input type="text" id="sellGameName" required placeholder="مثال: ببجي موبايل - كونكر">
+            </div>
+            <div class="form-group">
+                <label>المستوى والمزايا (التفاصيل):</label>
+                <textarea id="sellDetails" required placeholder="اكتب المستوى، السكنات النادرة، وسيلة الربط..."></textarea>
+            </div>
+            <div class="form-group">
+                <label>السعر المطلوب ($):</label>
+                <input type="number" id="sellPrice" required placeholder="أدخل السعر بالدولار">
+            </div>
+            <div class="form-group">
+              
+              <div class="form-group">
+    <label>صور الحساب (يمكنك اختيار عدة صور):</label>
+    <input type="file" id="sellImages" accept="image/*" multiple required style="padding: 6px;">
+</div>
+
+                <div class="form-group">
+    <div class="form-group">
+    <label>مقطع فيديو الحساب (اختياري):</label>
+    <input type="file" id="sellVideo" accept="video/*" style="padding: 6px;">
+</div>
+
+            </div>
+            <button type="submit" class="btn-primary" style="width: 100%;">إرسال طلب العرض للإدارة</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

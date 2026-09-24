@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قسم الشحن الفوري | NexusStore</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<!-- شريط التنقل العلوي الموحد -->
+<header style="background: var(--card-bg, #1e293b); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000;">
+    <div id="brandName" style="font-size: 1.3rem; font-weight: bold; color: var(--primary-color, #6366f1);">NexusStore</div>
+    
+    <!-- زر الـ 3 شخطات للقائمة الجانبية -->
+    <button onclick="toggleSidebar()" style="background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer;">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+</header>
+
+<!-- القائمة الجانبية المخفية من اليسار (تظهر في كل الصفحات) -->
+<div id="sideMenu" style="position: fixed; top: 0; left: -280px; width: 260px; height: 100%; background: #1e293b; z-index: 2000; box-shadow: 5px 0 15px rgba(0,0,0,0.5); transition: 0.3s ease; padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; gap: 15px;">
+    
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; padding-bottom: 10px;">
+        <span style="font-weight: bold; font-size: 1.1rem; color: #818cf8;">قائمة المتجر</span>
+        <button onclick="toggleSidebar()" style="background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer;"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <!-- روابط التنقل الشاملة -->
+    <a href="index.html" style="color: #f8fafc; text-decoration: none; padding: 10px; border-radius: 6px; background: #334155;"><i class="fa-solid fa-house"></i> الرئيسية</a>
+    <a href="wallet.html" style="color: #f8fafc; text-decoration: none; padding: 10px; border-radius: 6px; background: #334155;"><i class="fa-solid fa-wallet"></i> المحفظة والشحن (شام كاش)</a>
+    <a href="games.html" style="color: #f8fafc; text-decoration: none; padding: 10px; border-radius: 6px; background: #334155;"><i class="fa-solid fa-gamepad"></i> الأقسام والألعاب</a>
+    <a href="recharge.html" style="color: #f8fafc; text-decoration: none; padding: 10px; border-radius: 6px; background: #334155;"><i class="fa-solid fa-bolt"></i> شحن شدات / جواهر</a>
+    <a href="admin.html" style="color: #f8fafc; text-decoration: none; padding: 10px; border-radius: 6px; background: #334155;"><i class="fa-solid fa-lock"></i> لوحة التحكم</a>
+</div>
+
+<!-- طبقة تعتيم الخلفية عند فتح القائمة -->
+<div id="menuOverlay" onclick="toggleSidebar()" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1500; display: none;"></div>
+
+    <!-- شريط التنقل العلوي -->
+   
+
+    <!-- محتوى قسم الشحن -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title"><i class="fa-solid fa-bolt"></i> قسم شحن الجواهر والشدات الفوري</h2>
+            <p class="section-desc">شحن رسمي وآمن 100% مباشرة عبر معرف اللعبة (ID).</p>
+            
+            <div class="grid">
+                <div class="card">
+                    <div class="card-badge">شحن رسمي</div>
+                    <div class="card-img"><i class="fa-solid fa-coins"></i></div>
+                    <h3>660 شدة ببجي موبايل (UC)</h3>
+                    <p>شحن آمن ومباشر عبر الـ ID الخاص بك خلال دقيقتين.</p>
+                    <div class="price">10 دولار</div>
+                    <button class="btn-buy" onclick="orderItem('660 شدة ببجي موبايل', '10 دولار')"><i class="fa-solid fa-bolt"></i> اطلب الشحن</button>
+                </div>
+                <div class="card">
+                    <div class="card-badge">عرض خاص</div>
+                    <div class="card-img"><i class="fa-solid fa-gem"></i></div>
+                    <h3>1000 جوهرة فري فاير</h3>
+                    <p>تصلك الجواهر مباشرة إلى حسابك في اللعبة.</p>
+                    <div class="price">9 دولار</div>
+                    <button class="btn-buy" onclick="orderItem('1000 جوهرة فري فاير', '9 دولار')"><i class="fa-solid fa-bolt"></i> اطلب الشحن</button>
+                </div>
+                <div class="card">
+                    <div class="card-badge">تسليم فوري</div>
+                    <div class="card-img"><i class="fa-solid fa-star"></i></div>
+                    <h3>بطاقة قوقل بلاي / أبل 10$</h3>
+                    <p>كود نظامي يرسل لك فور تأكيد الطلب.</p>
+                    <div class="price">11 دولار</div>
+                    <button class="btn-buy" onclick="orderItem('بطاقة متجر 10$', '11 دولار')"><i class="fa-solid fa-bolt"></i> اطلب الشحن</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- نافذة إتمام الطلب المنبثقة -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2><i class="fa-solid fa-bag-shopping"></i> إتمام طلب الشحن</h2>
+            <p id="selectedItemText" style="margin: 15px 0; color: var(--accent-color); font-weight: bold;"></p>
+            <form id="checkoutForm" onsubmit="submitOrder(event)">
+                <div class="form-group">
+                    <label>الاسم الكريم:</label>
+                    <input type="text" id="clientName" required placeholder="أدخل اسمك">
+                </div>
+                <div class="form-group">
+                    <label>وسيلة التواصل (واتساب / تيليجرام):</label>
+                    <input type="text" id="clientContact" required placeholder="رقم الهاتف أو المعرّف">
+                </div>
+                <div class="form-group">
+                    <label>معرف اللعبة (ID) المطلوب الشحن له:</label>
+                    <textarea id="clientNotes" required placeholder="اكتب رقم الـ ID الخاص بك هنا بدقة..."></textarea>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%;">تأكيد وإرسال الطلب للوحة التحكم</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- نافذة دخول الآدمن -->
+    <div id="adminLoginModal" class="modal">
+        <div class="modal-content" style="max-width: 400px;">
+            <span class="close-modal" onclick="closeAdminLogin()">&times;</span>
+            <h2>دخول لوحة التحكم السرية</h2>
+            <form onsubmit="adminLogin(event)" style="margin-top: 20px;">
+                <div class="form-group">
+                    <label>اسم المستخدم السري:</label>
+                    <input type="text" id="adminUser" required>
+                </div>
+                <div class="form-group">
+                    <label>كلمة المرور السرية:</label>
+                    <input type="password" id="adminPass" required>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%;">دخول</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- لوحة التحكم -->
+    <div id="adminDashboard" class="admin-dashboard">
+        <div class="admin-header">
+            <h2>لوحة التحكم والطلبات</h2>
+            <button class="btn-danger" onclick="adminLogout()">خروج</button>
+        </div>
+        <div class="admin-tabs">
+            <button class="tab-btn active" onclick="switchAdminTab('ordersTab')">طلبات العملاء الواردة (<span id="ordersCount">0</span>)</button>
+        </div>
+        <div id="ordersTab" class="admin-tab-content active">
+            <h3>جميع الطلبات</h3>
+            <div style="overflow-x: auto;">
+                <table class="orders-table">
+                    <thead>
+                        <tr><th>#</th><th>العميل</th><th>التواصل</th><th>الطلب</th><th>الملاحظات / ID</th><th>التاريخ</th><th>الإجراء</th></tr>
+                    </thead>
+                    <tbody id="ordersTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 NexusStore. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محفظتي - NexusStore</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f8fafc;
+            --border-color: #334155;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .wallet-card {
+            background: linear-gradient(135deg, #6366f1, #4338ca);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+        }
+        .section-box {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: #fff;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: right;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+        th {
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. الهيدر العلوي وزر القائمة الجانبية (الشخطات) -->
+    <header style="background: var(--card-bg); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000;">
+        <div style="font-size: 1.3rem; font-weight: bold; color: var(--primary-color);">NexusStore</div>
+        <button onclick="toggleSidebar()" style="background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer;">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- 2. القائمة الجانبية -->
+    <div id="sideMenu" style="position: fixed; top: 0; left: -280px; width: 260px; height: 100%; background: var(--card-bg); z-index: 2000; box-shadow: 5px 0 15px rgba(0,0,0,0.5); transition: 0.3s ease; padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; gap: 15px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">
+            <span style="font-weight: bold; font-size: 1.1rem; color: #818cf8;">قائمة المتجر</span>
+            <button onclick="toggleSidebar()" style="background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer;"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <a href="index.html" style="color: #f8fafc; text-decoration: none; padding: 10px; border-radius: 6px; background: var(--border-color);"><i class="fa-solid fa-house"></i> الرئيسية</a>
+        <a href="wallet.html" style="color: #f8fafc; text-decoration: none; padding: 10px; border-radius: 6px; background: var(--border-color);"><i class="fa-solid fa-wallet"></i> المحفظة والشحن (شام كاش)</a>
+        <a href="games.html" style="color: #f8fafc; text-decoration: none; padding: 10px; border-radius: 6px; background: var(--border-color);"><i class="fa-solid fa-gamepad"></i> الأقسام والألعاب</a>
+        <a href="recharge.html" style="color: #f8fafc; text-decoration: none; padding: 10px; border-radius: 6px; background: var(--border-color);"><i class="fa-solid fa-bolt"></i> شحن شدات / جواهر</a>
+        <a href="admin.html" style="color: #f8fafc; text-decoration: none; padding: 10px; border-radius: 6px; background: var(--border-color);"><i class="fa-solid fa-lock"></i> لوحة التحكم</a>
+    </div>
+
+    <!-- 3. طبقة التعتيم للخلفية عند فتح القائمة -->
+    <div id="menuOverlay" onclick="toggleSidebar()" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1500; display: none;"></div>
+
+    <!-- 4. محتوى صفحة المحفظة بالكامل -->
+    <div class="container">
+        <div style="margin: 20px 0;">
+            <h1 style="font-size: 1.5rem; margin: 0;">إدارة المحفظة المالية</h1>
+        </div>
+
+        <!-- بطاقة عرض الرصيد -->
+        <div class="wallet-card">
+            <h2 style="margin: 0; font-size: 1.2rem; opacity: 0.9;">رصيدك الحالي في المحفظة</h2>
+            <div class="wallet-balance" id="userBalance" style="font-size: 2.5rem; font-weight: bold; margin: 10px 0 0 0;">$0.00</div>
+        </div>
+
+        <!-- قسم الإيداع والشحن الفوري عبر الشام كاش -->
+        <div class="section-box">
+            <h3 style="margin-top: 0; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; color: #818cf8;"><i class="fa-solid fa-wallet"></i> إيداع رصيد (عبر الشام كاش)</h3>
+            <p style="font-size: 0.85rem; color: #94a3b8;">قم بالتحويل عبر تطبيق الشام كاش إلى حسابنا، ثم أدخل بيانات التحويل أدناه للشحن الفوري:</p>
+            <form id="depositForm" onsubmit="submitDepositRequest(event)">
+                <div class="form-group">
+                    <label>اسمك الكامل:</label>
+                    <input type="text" id="depName" required placeholder="أدخل اسمك">
+                </div>
+                <div class="form-group">
+                    <label>المبلغ المحول ($):</label>
+                    <input type="number" step="0.01" id="depAmount" required placeholder="مثال: 10">
+                </div>
+                <div class="form-group">
+                    <label>رقم عملية التحويل (TxID):</label>
+                    <input type="text" id="depTxId" required placeholder="أدخل رقم العملية من الشام كاش">
+                </div>
+                <button type="submit" style="background: #22c55e; color: #fff; border: none; padding: 12px; width: 100%; border-radius: 6px; font-weight: bold; cursor: pointer;">تحقق وإضافة الرصيد فوراً</button>
+            </form>
+        </div>
+
+        <!-- قسم طلب السحب اليدوي -->
+        <div class="section-box">
+            <h3 style="margin-top: 0; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; color: #818cf8;"><i class="fa-solid fa-money-bill-transfer"></i> طلب سحب أرباح (يدوي)</h3>
+            <form id="withdrawForm" onsubmit="submitWithdrawalRequest(event)">
+                <div class="form-group">
+                    <label>اسم المستلم:</label>
+                    <input type="text" id="withName" required placeholder="اسمك الكامل">
+                </div>
+                <div class="form-group">
+                    <label>المبلغ المراد سحبه ($):</label>
+                    <input type="number" step="0.01" id="withAmount" required placeholder="المبلغ المطلوب">
+                </div>
+                <div class="form-group">
+                    <label>رقم حساب الشام كاش (للاستلام):</label>
+                    <input type="text" id="withShamAccount" required placeholder="رقم حسابك المالي أو هاتفك في الشام كاش">
+                </div>
+                <button type="submit" style="background: #f59e0b; color: #fff; border: none; padding: 12px; width: 100%; border-radius: 6px; font-weight: bold; cursor: pointer;">إرسال طلب السحب اليدوي للإدارة</button>
+            </form>
+        </div>
+
+        <!-- سجل المعاملات -->
+        <div class="section-box">
+            <h3 style="margin-top: 0; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; color: #818cf8;"><i class="fa-solid fa-clock-rotate-left"></i> سجل المعاملات والإيداعات</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>رقم العملية</th>
+                        <th>المبلغ</th>
+                        <th>الحالة</th>
+                        <th>التاريخ</th>
+                    </tr>
+                </thead>
+                <tbody id="walletTransactionsBody">
+                    <!-- يتم تعبئتها تلقائياً عبر سكربت الموقع -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if(typeof loadUserWallet === 'function') loadUserWallet();
+        });
+    </script>
+</body>
+</html>
